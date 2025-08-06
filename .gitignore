@@ -1,0 +1,15 @@
+# 忽略 Hugo 編譯輸出
+/public/
+/resources/
+
+# 編輯器設定
+*.swp
+*.swo
+.DS_Store
+.idea/
+.vscode/
+
+# 系統檔
+Thumbs.db
+ehthumbs.db
+Desktop.ini
