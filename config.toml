@@ -1,4 +1,10 @@
-baseURL = 'https://localhost:1313'
+baseURL = 'https://ezcan.github.io/candojo/'
 languageCode = 'zh-TW'
 title = 'Candojo'
 theme = 'PaperMod'
+enableInlineShortcodes = true
+
+[params]
+  env = "production"
+  ShowCodeCopyButtons = true
+  ShowShareButtons = true
