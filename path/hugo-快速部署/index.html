@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>5分鐘架設 Hugo 及上架 | Candojo</title>
+<meta name="keywords" content="Hugo, GitHub Pages, 部落格, No‑Code, AI協作">
+<meta name="description" content="本篇目標：完成 Hugo &#43; GitHub Pages 架設流程，並為日後在 Mac 撰寫 Markdown 文章打好基礎。">
+<meta name="author" content="ezcan">
+<link rel="canonical" href="https://ezcan.github.io/candojo/path/hugo-%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2/">
+<link crossorigin="anonymous" href="/candojo/assets/css/stylesheet.8fe10233a706bc87f2e08b3cf97b8bd4c0a80f10675a143675d59212121037c0.css" integrity="sha256-j&#43;ECM6cGvIfy4Is8&#43;XuL1MCoDxBnWhQ2ddWSEhIQN8A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://ezcan.github.io/candojo/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://ezcan.github.io/candojo/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://ezcan.github.io/candojo/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://ezcan.github.io/candojo/apple-touch-icon.png">
+<link rel="mask-icon" href="https://ezcan.github.io/candojo/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://ezcan.github.io/candojo/path/hugo-%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://ezcan.github.io/candojo/path/hugo-%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2/">
+  <meta property="og:site_name" content="Candojo">
+  <meta property="og:title" content="5分鐘架設 Hugo 及上架">
+  <meta property="og:description" content="本篇目標：完成 Hugo &#43; GitHub Pages 架設流程，並為日後在 Mac 撰寫 Markdown 文章打好基礎。">
+  <meta property="og:locale" content="zh-TW">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="path">
+    <meta property="article:published_time" content="2025-08-06T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-08-06T00:00:00+00:00">
+    <meta property="article:tag" content="Hugo">
+    <meta property="article:tag" content="GitHub Pages">
+    <meta property="article:tag" content="部落格">
+    <meta property="article:tag" content="No‑Code">
+    <meta property="article:tag" content="AI協作">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="5分鐘架設 Hugo 及上架">
+<meta name="twitter:description" content="本篇目標：完成 Hugo &#43; GitHub Pages 架設流程，並為日後在 Mac 撰寫 Markdown 文章打好基礎。">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Paths",
+      "item": "https://ezcan.github.io/candojo/path/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "5分鐘架設 Hugo 及上架",
+      "item": "https://ezcan.github.io/candojo/path/hugo-%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "5分鐘架設 Hugo 及上架",
+  "name": "5分鐘架設 Hugo 及上架",
+  "description": "本篇目標：完成 Hugo + GitHub Pages 架設流程，並為日後在 Mac 撰寫 Markdown 文章打好基礎。",
+  "keywords": [
+    "Hugo", "GitHub Pages", "部落格", "No‑Code", "AI協作"
+  ],
+  "articleBody": "好啦，我真的動手了！目標是在 5 分鐘內把網站跑起來 上一篇文章我說我決定靠 AI 來幫我實現部落格夢，這一篇就實際來動手試試看：\n能不能用最快速度，把 Hugo 架起來、套好主題、部署到 GitHub Pages，然後開啟新文章寫 Markdown？\n雖然標題寫「5分鐘」，但老實說中間還是有一些卡關時間（尤其是 Hugo 和 GitHub Pages 之間有些愛恨情仇），但如果你也想照著做，這篇可以當成懶人包，幾乎照貼照做就能成功 ✅\n第一步：工具先裝好（MacOS 篇） 如果你用的是 Mac，這些東西請先裝好（如果之前已裝可略過）：\nbrew install hugo brew install git 再來，建立一個新的 Hugo 專案：\nhugo new site \u003c網站名稱\u003e cd \u003c網站名稱\u003e 我直接選用AI推薦我的PaperMod主題\ngit init git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod 然後記得編輯 config.toml（或 hugo.toml），加上以下這些基本設定：\nbaseURL = 'https://你的帳號.github.io/' languageCode = 'zh-TW' title = 'Candojo' theme = 'PaperMod' 也可以多加一些參數讓主題變得更完整，但這個我們之後再說～\n第二步：建立 GitHub Pages 倉庫 這裡是 Hugo 的經典搭配：\n:::info ⚙️ Hugo 負責產出靜態頁面 → GitHub Pages 幫你把它上網 :::\n步驟如下：\n打開 GitHub，建立一個新倉庫（建議命名為 你的帳號.github.io） 不勾選 README（我們會從本機 push 上去） 記下這個倉庫網址，例如 https://github.com/ezcan/ezcan.github.io 第三步：本地測試不能少 如果你不想馬上部署，就可以先在本地看看網站長得怎樣？\nhugo server -D 預設會跑在 http://localhost:1313直接打開瀏覽器輸入這串網址，就可以看到網站囉！\n第四步：加一個懶人部署腳本 deploy.sh 每次部署都打一堆指令太麻煩，請AI幫忙輸出一個小腳本來部署：\nhugo -D cd public git init git remote add origin https://github.com/你的帳號/你的帳號.github.io.git git branch -M gh-pages git add . git commit -m \"deploy\" git push -f origin gh-pages cd .. 然後記得到 GitHub Repo → Settings → Pages → 選 gh-pages 分支作為網站來源。基本上就大功告成啦！\n",
+  "wordCount" : "138",
+  "inLanguage": "en",
+  "datePublished": "2025-08-06T00:00:00Z",
+  "dateModified": "2025-08-06T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "ezcan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ezcan.github.io/candojo/path/hugo-%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Candojo",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ezcan.github.io/candojo/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://ezcan.github.io/candojo/" accesskey="h" title="Candojo (Alt + H)">Candojo</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://ezcan.github.io/candojo/path/" title="知識小徑 🌿">
+                    <span>知識小徑 🌿</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://ezcan.github.io/candojo/about/" title="關於本站 🏠">
+                    <span>關於本站 🏠</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://ezcan.github.io/candojo/">Home</a>&nbsp;»&nbsp;<a href="https://ezcan.github.io/candojo/path/">Paths</a></div>
+    <h1 class="post-title entry-hint-parent">
+      5分鐘架設 Hugo 及上架
+    </h1>
+    <div class="post-meta"><span title='2025-08-06 00:00:00 +0000 UTC'>August 6, 2025</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;ezcan
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul><ul>
+                <li>
+                    <a href="#%e5%a5%bd%e5%95%a6%e6%88%91%e7%9c%9f%e7%9a%84%e5%8b%95%e6%89%8b%e4%ba%86%e7%9b%ae%e6%a8%99%e6%98%af%e5%9c%a8-5-%e5%88%86%e9%90%98%e5%85%a7%e6%8a%8a%e7%b6%b2%e7%ab%99%e8%b7%91%e8%b5%b7%e4%be%86" aria-label="好啦，我真的動手了！目標是在 5 分鐘內把網站跑起來">好啦，我真的動手了！目標是在 5 分鐘內把網站跑起來</a></li></ul>
+                    
+                <li>
+                    <a href="#%e7%ac%ac%e4%b8%80%e6%ad%a5%e5%b7%a5%e5%85%b7%e5%85%88%e8%a3%9d%e5%a5%bdmacos-%e7%af%87" aria-label="第一步：工具先裝好（MacOS 篇）">第一步：工具先裝好（MacOS 篇）</a></li>
+                <li>
+                    <a href="#%e7%ac%ac%e4%ba%8c%e6%ad%a5%e5%bb%ba%e7%ab%8b-github-pages-%e5%80%89%e5%ba%ab" aria-label="第二步：建立 GitHub Pages 倉庫">第二步：建立 GitHub Pages 倉庫</a></li>
+                <li>
+                    <a href="#%e7%ac%ac%e4%b8%89%e6%ad%a5%e6%9c%ac%e5%9c%b0%e6%b8%ac%e8%a9%a6%e4%b8%8d%e8%83%bd%e5%b0%91" aria-label="第三步：本地測試不能少">第三步：本地測試不能少</a></li>
+                <li>
+                    <a href="#%e7%ac%ac%e5%9b%9b%e6%ad%a5%e5%8a%a0%e4%b8%80%e5%80%8b%e6%87%b6%e4%ba%ba%e9%83%a8%e7%bd%b2%e8%85%b3%e6%9c%ac-deploysh" aria-label="第四步：加一個懶人部署腳本 deploy.sh">第四步：加一個懶人部署腳本 deploy.sh</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h3 id="好啦我真的動手了目標是在-5-分鐘內把網站跑起來">好啦，我真的動手了！目標是在 5 分鐘內把網站跑起來<a hidden class="anchor" aria-hidden="true" href="#好啦我真的動手了目標是在-5-分鐘內把網站跑起來">#</a></h3>
+<p>上一篇文章我說我決定靠 AI 來幫我實現部落格夢，這一篇就實際來動手試試看：<br>
+<strong>能不能用最快速度，把 Hugo 架起來、套好主題、部署到 GitHub Pages，然後開啟新文章寫 Markdown？</strong></p>
+<p>雖然標題寫「5分鐘」，但老實說中間還是有一些卡關時間（尤其是 Hugo 和 GitHub Pages 之間有些愛恨情仇），但如果你也想照著做，這篇可以當成懶人包，幾乎照貼照做就能成功 ✅</p>
+<hr>
+<h2 id="第一步工具先裝好macos-篇">第一步：工具先裝好（MacOS 篇）<a hidden class="anchor" aria-hidden="true" href="#第一步工具先裝好macos-篇">#</a></h2>
+<p>如果你用的是 Mac，這些東西請先裝好（如果之前已裝可略過）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install hugo
+</span></span><span style="display:flex;"><span>brew install git
+</span></span></code></pre></div><p>再來，建立一個新的 Hugo 專案：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new site &lt;網站名稱&gt;
+</span></span><span style="display:flex;"><span>cd &lt;網站名稱&gt;
+</span></span></code></pre></div><p>我直接選用AI推薦我的PaperMod主題</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git submodule add https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
+</span></span></code></pre></div><p>然後記得編輯 config.toml（或 hugo.toml），加上以下這些基本設定：</p>
+<pre tabindex="0"><code>baseURL = &#39;https://你的帳號.github.io/&#39; 
+languageCode = &#39;zh-TW&#39;
+title = &#39;Candojo&#39;
+theme = &#39;PaperMod&#39;
+</code></pre><p>也可以多加一些參數讓主題變得更完整，但這個我們之後再說～</p>
+<hr>
+<h2 id="第二步建立-github-pages-倉庫">第二步：建立 GitHub Pages 倉庫<a hidden class="anchor" aria-hidden="true" href="#第二步建立-github-pages-倉庫">#</a></h2>
+<p>這裡是 Hugo 的經典搭配：</p>
+<p>:::info
+⚙️ Hugo 負責產出靜態頁面 → GitHub Pages 幫你把它上網
+:::</p>
+<p>步驟如下：</p>
+<ol>
+<li>打開 GitHub，建立一個新倉庫（建議命名為 你的帳號.github.io）</li>
+<li>不勾選 README（我們會從本機 push 上去）</li>
+<li>記下這個倉庫網址，例如 <a href="https://github.com/ezcan/ezcan.github.io">https://github.com/ezcan/ezcan.github.io</a></li>
+</ol>
+<hr>
+<h2 id="第三步本地測試不能少">第三步：本地測試不能少<a hidden class="anchor" aria-hidden="true" href="#第三步本地測試不能少">#</a></h2>
+<p>如果你不想馬上部署，就可以先在本地看看網站長得怎樣？</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo server -D
+</span></span></code></pre></div><p>預設會跑在 <code>http://localhost:1313</code>直接打開瀏覽器輸入這串網址，就可以看到網站囉！</p>
+<hr>
+<h2 id="第四步加一個懶人部署腳本-deploysh">第四步：加一個懶人部署腳本 deploy.sh<a hidden class="anchor" aria-hidden="true" href="#第四步加一個懶人部署腳本-deploysh">#</a></h2>
+<p>每次部署都打一堆指令太麻煩，請AI幫忙輸出一個小腳本來部署：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo -D
+</span></span><span style="display:flex;"><span>cd public
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git remote add origin https://github.com/你的帳號/你的帳號.github.io.git
+</span></span><span style="display:flex;"><span>git branch -M gh-pages
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;deploy&#34;</span>
+</span></span><span style="display:flex;"><span>git push -f origin gh-pages
+</span></span><span style="display:flex;"><span>cd ..
+</span></span></code></pre></div><p>然後記得到 GitHub Repo → Settings → Pages → 選 gh-pages 分支作為網站來源。基本上就大功告成啦！</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://ezcan.github.io/candojo/tags/hugo/">Hugo</a></li>
+      <li><a href="https://ezcan.github.io/candojo/tags/github-pages/">GitHub Pages</a></li>
+      <li><a href="https://ezcan.github.io/candojo/tags/%E9%83%A8%E8%90%BD%E6%A0%BC/">部落格</a></li>
+      <li><a href="https://ezcan.github.io/candojo/tags/nocode/">No‑Code</a></li>
+      <li><a href="https://ezcan.github.io/candojo/tags/ai%E5%8D%94%E4%BD%9C/">AI協作</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://ezcan.github.io/candojo/path/hugo-%E5%B0%88%E6%A1%88%E6%9E%B6%E6%A7%8B/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>認識 Hogo 的專案構造</span>
+  </a>
+  <a class="next" href="https://ezcan.github.io/candojo/path/hugo-%E5%BE%9E%E9%9B%B6%E9%96%8B%E5%A7%8B/">
+    <span class="title">Next »</span>
+    <br>
+    <span>為什麼選擇 Hugo &#43; GitHub Pages？</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://ezcan.github.io/candojo/">Candojo</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

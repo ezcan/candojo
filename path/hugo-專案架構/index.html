@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>認識 Hogo 的專案構造 | Candojo</title>
+<meta name="keywords" content="Hugo, GitHub Pages, 部落格, No-Code, AI協作">
+<meta name="description" content="帶你認識 Hugo 專案資料夾結構，以及 config.toml 能設定的功能，讓你在 PaperMod 主題下快速上手。">
+<meta name="author" content="ezcan">
+<link rel="canonical" href="https://ezcan.github.io/candojo/path/hugo-%E5%B0%88%E6%A1%88%E6%9E%B6%E6%A7%8B/">
+<link crossorigin="anonymous" href="/candojo/assets/css/stylesheet.8fe10233a706bc87f2e08b3cf97b8bd4c0a80f10675a143675d59212121037c0.css" integrity="sha256-j&#43;ECM6cGvIfy4Is8&#43;XuL1MCoDxBnWhQ2ddWSEhIQN8A=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://ezcan.github.io/candojo/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://ezcan.github.io/candojo/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://ezcan.github.io/candojo/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://ezcan.github.io/candojo/apple-touch-icon.png">
+<link rel="mask-icon" href="https://ezcan.github.io/candojo/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://ezcan.github.io/candojo/path/hugo-%E5%B0%88%E6%A1%88%E6%9E%B6%E6%A7%8B/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://ezcan.github.io/candojo/path/hugo-%E5%B0%88%E6%A1%88%E6%9E%B6%E6%A7%8B/">
+  <meta property="og:site_name" content="Candojo">
+  <meta property="og:title" content="認識 Hogo 的專案構造">
+  <meta property="og:description" content="帶你認識 Hugo 專案資料夾結構，以及 config.toml 能設定的功能，讓你在 PaperMod 主題下快速上手。">
+  <meta property="og:locale" content="zh-TW">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="path">
+    <meta property="article:published_time" content="2025-08-07T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-08-07T00:00:00+00:00">
+    <meta property="article:tag" content="Hugo">
+    <meta property="article:tag" content="GitHub Pages">
+    <meta property="article:tag" content="部落格">
+    <meta property="article:tag" content="No-Code">
+    <meta property="article:tag" content="AI協作">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="認識 Hogo 的專案構造">
+<meta name="twitter:description" content="帶你認識 Hugo 專案資料夾結構，以及 config.toml 能設定的功能，讓你在 PaperMod 主題下快速上手。">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Paths",
+      "item": "https://ezcan.github.io/candojo/path/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "認識 Hogo 的專案構造",
+      "item": "https://ezcan.github.io/candojo/path/hugo-%E5%B0%88%E6%A1%88%E6%9E%B6%E6%A7%8B/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "認識 Hogo 的專案構造",
+  "name": "認識 Hogo 的專案構造",
+  "description": "帶你認識 Hugo 專案資料夾結構，以及 config.toml 能設定的功能，讓你在 PaperMod 主題下快速上手。",
+  "keywords": [
+    "Hugo", "GitHub Pages", "部落格", "No-Code", "AI協作"
+  ],
+  "articleBody": "我開始好奇 Hugo 背後的「骨架」了 前兩篇，我們用 5 分鐘把網站架起來、成功部署到 GitHub Pages，算是踏出了 Hugo 世界的第一步。\n接下來，應該來對這個專案一無所知的內臟構造進行探索 🤯\n於是這篇，我決定來認識 Hugo 的專案架構，順便看看 config.toml 能玩出什麼花樣。\n不求一次看完全記住，但至少知道每個資料夾的功能、哪些設定是「一定要先改」的。\n第一部分：Hugo 專案架構巡禮 🏗️ 當你跑完 hugo new site \u003c專案名稱\u003e 之後，專案資料夾大概會長這樣：\n專案名稱/ ├── archetypes/ # 新文章的模板（front matter 預設值） ├── assets/ # SCSS、JS 原始檔（進階自訂用） ├── content/ # 你的文章內容（Markdown） ├── data/ # JSON/YAML/TOML 資料檔，可用於模板 ├── layouts/ # 覆寫或新增版型（HTML 模板） ├── static/ # 靜態資源（圖片、CSS、JS） ├── themes/ # 主題（例如 PaperMod） ├── config.toml # 設定檔（網站全局設定） └── public/ # Hugo 輸出成品（部署用） 💡 最常用的資料夾就是 content/、static/、themes/ 和 config.toml，其他資料夾等熟悉之後再慢慢玩。\n第二部分：config.toml 可以設定什麼？ config.toml 是 Hugo 網站的大腦，負責定義網站標題、網址、語系、主題，還能開啟或關閉一些功能。\n以下是AI推薦 PaperMod 主題必改 或 很好用 的設定項目：\nbaseURL = \"https://ezcan.github.io/candojo/\" languageCode = \"zh-TW\" title = \"Candojo\" theme = \"PaperMod\" enableInlineShortcodes = true paginate = 10 # 每頁顯示文章數 [params] author = \"你的名字\" defaultTheme = \"auto\" # 預設主題模式 auto / light / dark ShowReadingTime = true ShowBreadCrumbs = true ShowPostNavLinks = true ShowToc = true TocOpen = false [menu] [[menu.main]] name = \"文章\" url = \"/posts/\" weight = 1 [[menu.main]] name = \"關於\" url = \"/about/\" weight = 2 常見設定分類 🔍 網站基本資訊\nbaseURL、title、languageCode、theme\n（這些幾乎每個 Hugo 專案都會設定）\n功能開關（params）\n主題專屬的開關，例如顯示閱讀時間、是否開啟文章目錄、社群連結。\n選單（menu）\n控制頂部導覽列項目與排序。\n文章呈現細節\n每頁幾篇文章（paginate）、摘要長度（summaryLength）等。\n多語系（languages）\n想做雙語部落格時會用到，初期可以先略過。\n第三部分：PaperMod 常用的小彩蛋 ✨ 首頁自我介紹區塊\n在 params 裡加 homeInfoParams，可以讓首頁出現一句話簡介與連結。 [params.homeInfoParams] Title = \"Hi，我是 Ezcan 👋\" Content = \"這裡紀錄我的 Hugo 架站、AI 協作筆記，以及一些興趣研究\" 社群圖示\n讓你的 GitHub、Email、Twitter 直接顯示在頂部或底部。 [[params.socialIcons]] name = \"github\" url = \"https://github.com/ezcan\" [[params.socialIcons]] name = \"email\" url = \"mailto:your@email.com\" 小結 今天我們拆解了 Hugo 的專案骨架，知道哪些資料夾最常用，還認識了 config.toml 能開哪些開關。\n下一篇，我會實際示範 改 config.toml → 馬上看到首頁變化 的過程，讓設定不再只是死板的文字，而是可視化的改造工具。\n👉 [敬請期待！]\n",
+  "wordCount" : "225",
+  "inLanguage": "en",
+  "datePublished": "2025-08-07T00:00:00Z",
+  "dateModified": "2025-08-07T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "ezcan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ezcan.github.io/candojo/path/hugo-%E5%B0%88%E6%A1%88%E6%9E%B6%E6%A7%8B/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Candojo",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ezcan.github.io/candojo/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://ezcan.github.io/candojo/" accesskey="h" title="Candojo (Alt + H)">Candojo</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://ezcan.github.io/candojo/path/" title="知識小徑 🌿">
+                    <span>知識小徑 🌿</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://ezcan.github.io/candojo/about/" title="關於本站 🏠">
+                    <span>關於本站 🏠</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://ezcan.github.io/candojo/">Home</a>&nbsp;»&nbsp;<a href="https://ezcan.github.io/candojo/path/">Paths</a></div>
+    <h1 class="post-title entry-hint-parent">
+      認識 Hogo 的專案構造
+    </h1>
+    <div class="post-meta"><span title='2025-08-07 00:00:00 +0000 UTC'>August 7, 2025</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;ezcan
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul><ul>
+                <li>
+                    <a href="#%e6%88%91%e9%96%8b%e5%a7%8b%e5%a5%bd%e5%a5%87-hugo-%e8%83%8c%e5%be%8c%e7%9a%84%e9%aa%a8%e6%9e%b6%e4%ba%86" aria-label="我開始好奇 Hugo 背後的「骨架」了">我開始好奇 Hugo 背後的「骨架」了</a></li></ul>
+                    
+                <li>
+                    <a href="#%e7%ac%ac%e4%b8%80%e9%83%a8%e5%88%86hugo-%e5%b0%88%e6%a1%88%e6%9e%b6%e6%a7%8b%e5%b7%a1%e7%a6%ae-" aria-label="第一部分：Hugo 專案架構巡禮 🏗️">第一部分：Hugo 專案架構巡禮 🏗️</a></li>
+                <li>
+                    <a href="#%e7%ac%ac%e4%ba%8c%e9%83%a8%e5%88%86configtoml-%e5%8f%af%e4%bb%a5%e8%a8%ad%e5%ae%9a%e4%bb%80%e9%ba%bc" aria-label="第二部分：config.toml 可以設定什麼？">第二部分：config.toml 可以設定什麼？</a><ul>
+                        
+                <li>
+                    <a href="#%e5%b8%b8%e8%a6%8b%e8%a8%ad%e5%ae%9a%e5%88%86%e9%a1%9e-" aria-label="常見設定分類 🔍">常見設定分類 🔍</a></li></ul>
+                </li>
+                <li>
+                    <a href="#%e7%ac%ac%e4%b8%89%e9%83%a8%e5%88%86papermod-%e5%b8%b8%e7%94%a8%e7%9a%84%e5%b0%8f%e5%bd%a9%e8%9b%8b-" aria-label="第三部分：PaperMod 常用的小彩蛋 ✨">第三部分：PaperMod 常用的小彩蛋 ✨</a><ul>
+                        
+                <li>
+                    <a href="#%e5%b0%8f%e7%b5%90" aria-label="小結">小結</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h3 id="我開始好奇-hugo-背後的骨架了">我開始好奇 Hugo 背後的「骨架」了<a hidden class="anchor" aria-hidden="true" href="#我開始好奇-hugo-背後的骨架了">#</a></h3>
+<p>前兩篇，我們用 5 分鐘把網站架起來、成功部署到 GitHub Pages，算是踏出了 Hugo 世界的第一步。<br>
+接下來，應該來對這個專案一無所知的<strong>內臟構造</strong>進行探索 🤯</p>
+<p>於是這篇，我決定來認識 Hugo 的專案架構，順便看看 <code>config.toml</code> 能玩出什麼花樣。<br>
+不求一次看完全記住，但至少知道每個資料夾的功能、哪些設定是「一定要先改」的。</p>
+<hr>
+<h2 id="第一部分hugo-專案架構巡禮-">第一部分：Hugo 專案架構巡禮 🏗️<a hidden class="anchor" aria-hidden="true" href="#第一部分hugo-專案架構巡禮-">#</a></h2>
+<p>當你跑完 <code>hugo new site &lt;專案名稱&gt;</code> 之後，專案資料夾大概會長這樣：</p>
+<pre tabindex="0"><code>專案名稱/
+├── archetypes/      # 新文章的模板（front matter 預設值）
+├── assets/          # SCSS、JS 原始檔（進階自訂用）
+├── content/         # 你的文章內容（Markdown）
+├── data/            # JSON/YAML/TOML 資料檔，可用於模板
+├── layouts/         # 覆寫或新增版型（HTML 模板）
+├── static/          # 靜態資源（圖片、CSS、JS）
+├── themes/          # 主題（例如 PaperMod）
+├── config.toml      # 設定檔（網站全局設定）
+└── public/          # Hugo 輸出成品（部署用）
+</code></pre><p>💡 <strong>最常用的資料夾就是 <code>content/</code>、<code>static/</code>、<code>themes/</code> 和 <code>config.toml</code></strong>，其他資料夾等熟悉之後再慢慢玩。</p>
+<hr>
+<h2 id="第二部分configtoml-可以設定什麼">第二部分：config.toml 可以設定什麼？<a hidden class="anchor" aria-hidden="true" href="#第二部分configtoml-可以設定什麼">#</a></h2>
+<p><code>config.toml</code> 是 Hugo 網站的大腦，負責定義網站標題、網址、語系、主題，還能開啟或關閉一些功能。</p>
+<p>以下是AI推薦 <strong>PaperMod 主題必改</strong> 或 <strong>很好用</strong> 的設定項目：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">baseURL</span> = <span style="color:#e6db74">&#34;https://ezcan.github.io/candojo/&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">languageCode</span> = <span style="color:#e6db74">&#34;zh-TW&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#34;Candojo&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">theme</span> = <span style="color:#e6db74">&#34;PaperMod&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">enableInlineShortcodes</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">paginate</span> = <span style="color:#ae81ff">10</span>  <span style="color:#75715e"># 每頁顯示文章數</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">params</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">author</span> = <span style="color:#e6db74">&#34;你的名字&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">defaultTheme</span> = <span style="color:#e6db74">&#34;auto&#34;</span> <span style="color:#75715e"># 預設主題模式 auto / light / dark</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ShowReadingTime</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ShowBreadCrumbs</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ShowPostNavLinks</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ShowToc</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">TocOpen</span> = <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">menu</span>]
+</span></span><span style="display:flex;"><span>  [[<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;文章&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;/posts/&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  [[<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;關於&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;/about/&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><hr>
+<h3 id="常見設定分類-">常見設定分類 🔍<a hidden class="anchor" aria-hidden="true" href="#常見設定分類-">#</a></h3>
+<ol>
+<li>
+<p><strong>網站基本資訊</strong><br>
+<code>baseURL</code>、<code>title</code>、<code>languageCode</code>、<code>theme</code><br>
+（這些幾乎每個 Hugo 專案都會設定）</p>
+</li>
+<li>
+<p><strong>功能開關（params）</strong><br>
+主題專屬的開關，例如顯示閱讀時間、是否開啟文章目錄、社群連結。</p>
+</li>
+<li>
+<p><strong>選單（menu）</strong><br>
+控制頂部導覽列項目與排序。</p>
+</li>
+<li>
+<p><strong>文章呈現細節</strong><br>
+每頁幾篇文章（<code>paginate</code>）、摘要長度（<code>summaryLength</code>）等。</p>
+</li>
+<li>
+<p><strong>多語系（languages）</strong><br>
+想做雙語部落格時會用到，初期可以先略過。</p>
+</li>
+</ol>
+<hr>
+<h2 id="第三部分papermod-常用的小彩蛋-">第三部分：PaperMod 常用的小彩蛋 ✨<a hidden class="anchor" aria-hidden="true" href="#第三部分papermod-常用的小彩蛋-">#</a></h2>
+<ul>
+<li><strong>首頁自我介紹區塊</strong><br>
+在 <code>params</code> 裡加 <code>homeInfoParams</code>，可以讓首頁出現一句話簡介與連結。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">params</span>.<span style="color:#a6e22e">homeInfoParams</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Title</span> = <span style="color:#e6db74">&#34;Hi，我是 Ezcan 👋&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Content</span> = <span style="color:#e6db74">&#34;這裡紀錄我的 Hugo 架站、AI 協作筆記，以及一些興趣研究&#34;</span>
+</span></span></code></pre></div><ul>
+<li><strong>社群圖示</strong><br>
+讓你的 GitHub、Email、Twitter 直接顯示在頂部或底部。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[[<span style="color:#a6e22e">params</span>.<span style="color:#a6e22e">socialIcons</span>]]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;github&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;https://github.com/ezcan&#34;</span>
+</span></span><span style="display:flex;"><span>[[<span style="color:#a6e22e">params</span>.<span style="color:#a6e22e">socialIcons</span>]]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;email&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;mailto:your@email.com&#34;</span>
+</span></span></code></pre></div><hr>
+<h3 id="小結">小結<a hidden class="anchor" aria-hidden="true" href="#小結">#</a></h3>
+<p>今天我們拆解了 Hugo 的專案骨架，知道哪些資料夾最常用，還認識了 <code>config.toml</code> 能開哪些開關。<br>
+下一篇，我會實際示範 <strong>改 config.toml → 馬上看到首頁變化</strong> 的過程，讓設定不再只是死板的文字，而是可視化的改造工具。</p>
+<p>👉 <strong>[敬請期待！]</strong></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://ezcan.github.io/candojo/tags/hugo/">Hugo</a></li>
+      <li><a href="https://ezcan.github.io/candojo/tags/github-pages/">GitHub Pages</a></li>
+      <li><a href="https://ezcan.github.io/candojo/tags/%E9%83%A8%E8%90%BD%E6%A0%BC/">部落格</a></li>
+      <li><a href="https://ezcan.github.io/candojo/tags/no-code/">No-Code</a></li>
+      <li><a href="https://ezcan.github.io/candojo/tags/ai%E5%8D%94%E4%BD%9C/">AI協作</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://ezcan.github.io/candojo/path/hugo-%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2/">
+    <span class="title">Next »</span>
+    <br>
+    <span>5分鐘架設 Hugo 及上架</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://ezcan.github.io/candojo/">Candojo</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

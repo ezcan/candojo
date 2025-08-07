@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Candojo</title>
+    <link>https://ezcan.github.io/candojo/</link>
+    <description>Recent content on Candojo</description>
+    <generator>Hugo -- 0.148.2</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Thu, 07 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://ezcan.github.io/candojo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>認識 Hogo 的專案構造</title>
+      <link>https://ezcan.github.io/candojo/path/hugo-%E5%B0%88%E6%A1%88%E6%9E%B6%E6%A7%8B/</link>
+      <pubDate>Thu, 07 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://ezcan.github.io/candojo/path/hugo-%E5%B0%88%E6%A1%88%E6%9E%B6%E6%A7%8B/</guid>
+      <description>帶你認識 Hugo 專案資料夾結構，以及 config.toml 能設定的功能，讓你在 PaperMod 主題下快速上手。</description>
+    </item>
+    <item>
+      <title>關於本站 🏠</title>
+      <link>https://ezcan.github.io/candojo/about/</link>
+      <pubDate>Thu, 07 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://ezcan.github.io/candojo/about/</guid>
+      <description>&lt;h2 id=&#34;-candojo教育--程式--野球的-ai-筆記&#34;&gt;👋 CANDOJO：教育 × 程式 × 野球的 AI 筆記&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;✍️ 嗨，我是EZCAN，這是我第三次架設部落格。&lt;br&gt;
+第一次停更的原因是懶，第二次則是更懶。&lt;br&gt;
+但（希望）這次不一樣──因為主要作者是 ChatGPT，我只負責點擊滑鼠 🖱️&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;-工具人日誌no-codelow-codeless-typing-都來&#34;&gt;🧑‍💻 工具人日誌：No-code？Low-code？Less typing 都來！&lt;/h3&gt;
+&lt;p&gt;雖然不寫code了，但我體內深刻留著工程師的驕傲：懶🦥&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;能自動化的就交給 AI，不能的就&amp;hellip;先放著。&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;本部落格會記錄我在學習或處理教育行政時用到的各種工具（懶人工具箱🧰），包括但不限於：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Hugo + GitHub Pages 架站&lt;/li&gt;
+&lt;li&gt;ChatGPT + Markdown 自動產文&lt;/li&gt;
+&lt;li&gt;有趣的AI工具及教學應用（如果有）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;-野球夢鍵盤球探的實況人生&#34;&gt;⚾ 野球夢：鍵盤球探的實況人生&lt;/h3&gt;
+&lt;p&gt;身為資深《實況野球》與中職球迷，我的休閒之一是：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;**蒐集中華職棒選手資料 → 轉換成遊戲角色(可能是之後更新的最頻繁的內容)&lt;/p&gt;&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;如果你也剛好欣賞中華職棒而且是實況愛好者，歡迎到遊戲中下載我的球隊 🧪&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;-本站主筆chatgpt-feat-ezcan&#34;&gt;🤖 本站主筆：ChatGPT Feat. EZCAN&lt;/h3&gt;
+&lt;p&gt;雖然是我架站，但實際產文的苦工──是 ChatGPT，再次強調我只負責出一張嘴和偷懶。
+這裡採用的協作模式是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;我丟題目&lt;/li&gt;
+&lt;li&gt;AI寫一版&lt;/li&gt;
+&lt;li&gt;我再改一點點（或者偷懶不改）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;希望打造一個 &lt;strong&gt;有效率又有梗&lt;/strong&gt; 的知識空間。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;🙏 謝謝 OpenAI，讓一位懶癌末期的業餘鍵盤球探暨教育邊緣人，終於更新部落格了。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;-你可以期待什麼&#34;&gt;📬 你可以期待什麼？&lt;/h3&gt;
+&lt;p&gt;先說本部落格沒有固定更新頻率（有就不錯了），但主題大致如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;🚸 程式教學經驗談（從國小到大學）&lt;/li&gt;
+&lt;li&gt;🧩 教案設計、AI 協作工作術&lt;/li&gt;
+&lt;li&gt;🛠️ Hugo 架站紀錄、懶人工具分享&lt;/li&gt;
+&lt;li&gt;⚾️ 野球選手能力分析與遊戲化改編（或許是主要更新項目？）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果你剛好也關心教育、程式或野球（中華職棒），那這裡或許也是你的道場。&lt;br&gt;
+如果不是──那也歡迎來笑我寫不下去第 N 次 🤣&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>5分鐘架設 Hugo 及上架</title>
+      <link>https://ezcan.github.io/candojo/path/hugo-%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Wed, 06 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://ezcan.github.io/candojo/path/hugo-%E5%BF%AB%E9%80%9F%E9%83%A8%E7%BD%B2/</guid>
+      <description>本篇目標：完成 Hugo + GitHub Pages 架設流程，並為日後在 Mac 撰寫 Markdown 文章打好基礎。</description>
+    </item>
+    <item>
+      <title>為什麼選擇 Hugo &#43; GitHub Pages？</title>
+      <link>https://ezcan.github.io/candojo/path/hugo-%E5%BE%9E%E9%9B%B6%E9%96%8B%E5%A7%8B/</link>
+      <pubDate>Tue, 05 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://ezcan.github.io/candojo/path/hugo-%E5%BE%9E%E9%9B%B6%E9%96%8B%E5%A7%8B/</guid>
+      <description>想寫部落格卻被懶癌打敗？看我如何用 Hugo + GitHub Pages + AI 協作，打造零成本、高效能的個人網站。</description>
+    </item>
+  </channel>
+</rss>
