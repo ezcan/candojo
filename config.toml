@@ -5,6 +5,20 @@ theme = 'PaperMod'
 enableInlineShortcodes = true
 
 [params]
-  env = "production"
-  ShowCodeCopyButtons = true
-  ShowShareButtons = true
+  author = "ezcan"
+  defaultTheme = "auto" # 預設主題模式 auto / light / dark
+  ShowReadingTime = true
+  ShowBreadCrumbs = true
+  ShowPostNavLinks = true
+  ShowToc = true
+  TocOpen = false
+
+[menu]
+  [[menu.main]]
+    name = "知識小徑 🌿"
+    url = "/path/"
+    weight = 1
+  [[menu.main]]
+    name = "關於本站 🏠"
+    url = "/about/"
+    weight = 100
