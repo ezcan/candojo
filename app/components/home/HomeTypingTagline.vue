@@ -46,8 +46,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-[2.5rem] flex items-center justify-center overflow-hidden">
-    <p class="text-[16px] sm:text-[14px] font-bold text-pawa-brown/40 tracking-wide whitespace-nowrap">
+  <div class="min-h-[3.5rem] sm:min-h-[2.5rem] flex items-center justify-center overflow-hidden max-w-[90vw] mx-auto">
+    <p class="text-[13px] sm:text-[14px] font-bold text-pawa-brown/40 tracking-wide leading-relaxed">
       這裡是...{{ displayText }}
       <span class="inline-block w-[2px] h-[1em] bg-pawa-blue/30 ml-0.5 animate-pulse align-middle"></span>
     </p>

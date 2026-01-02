@@ -95,21 +95,21 @@ const navItems = [
     <!-- Mobile Sticky Footer Navigation (Only on Subpages) -->
     <div 
       v-if="!isHome"
-      class="fixed bottom-6 left-0 right-0 z-50 px-4 sm:hidden pointer-events-none"
+      class="fixed bottom-6 left-0 right-0 z-50 px-3 sm:hidden pointer-events-none"
     >
-      <nav class="pawa-card max-w-[340px] mx-auto bg-white/95 backdrop-blur-md border-pawa-brown/10 shadow-block p-1 !rounded-full flex items-center justify-around pointer-events-auto">
+      <nav class="pawa-card max-w-[380px] mx-auto bg-white/95 backdrop-blur-md border-pawa-brown/10 shadow-block p-1 !rounded-full flex items-center justify-around pointer-events-auto">
         <NuxtLink 
           v-for="item in navItems"
           :key="item.to"
           :to="item.to" 
-          class="flex-1 flex flex-col items-center py-2 px-1 rounded-full transition-all active:scale-90"
+          class="flex-1 flex flex-col items-center py-2 px-1 rounded-full transition-all active:scale-90 overflow-hidden"
           :class="route.path === item.to 
             ? `bg-pawa-${item.theme}Dark text-white` 
             : 'text-pawa-brown/50'"
         >
-          <UiIcon v-if="item.isSvg" :name="item.icon" size="20" class="mb-0.5" />
-          <span v-else class="text-lg mb-0.5">{{ item.icon }}</span>
-          <span class="text-[9px] font-black tracking-tighter">{{ item.label }}</span>
+          <UiIcon v-if="item.isSvg" :name="item.icon" size="18" class="mb-0.5" />
+          <span v-else class="text-base mb-0.5">{{ item.icon }}</span>
+          <span class="text-[8px] font-black tracking-tighter truncate w-full text-center">{{ item.label }}</span>
         </NuxtLink>
       </nav>
     </div>
