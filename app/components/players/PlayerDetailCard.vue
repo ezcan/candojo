@@ -15,7 +15,7 @@ const isPitcher = computed(() => checkIsPitcher(props.player))
 
 <template>
   <div 
-    class="app-card p-5 flex flex-col transition-all cursor-pointer group"
+    class="pawa-card p-4 sm:p-5 flex flex-col transition-all cursor-pointer group"
     :class="{ 'ring-2 ring-pawa-blue/20': expanded }"
     @click="toggleExpand"
   >
@@ -30,12 +30,12 @@ const isPitcher = computed(() => checkIsPitcher(props.player))
     </div>
 
     <!-- Stats Table Area -->
-    <div class="mt-1">
-      <table v-if="!isPitcher" class="summary-table w-full">
+    <div class="mt-1 overflow-x-auto no-scrollbar">
+      <table v-if="!isPitcher" class="summary-table w-full table-fixed min-w-[280px]">
         <thead>
           <tr class="border-b border-pawa-brown/5">
-            <th class="py-1 text-[10px] font-black text-pawa-brown/30 text-center">彈道</th>
-            <th v-for="s in batterStats" :key="s.key" class="py-1 text-[10px] font-black text-pawa-brown/30 text-center">
+            <th class="py-1 text-[8px] sm:text-[10px] font-black text-pawa-brown/30 text-center">彈道</th>
+            <th v-for="s in batterStats" :key="s.key" class="py-1 text-[8px] sm:text-[10px] font-black text-pawa-brown/30 text-center">
               {{ s.short }}
             </th>
           </tr>
@@ -54,25 +54,31 @@ const isPitcher = computed(() => checkIsPitcher(props.player))
         </tbody>
       </table>
 
-      <table v-else class="summary-table w-full">
+      <table v-else class="summary-table w-full table-fixed min-w-[280px]">
         <thead>
           <tr class="border-b border-pawa-brown/5">
-            <th class="py-1 text-[10px] font-black text-pawa-brown/30 text-left px-1">球速</th>
-            <th v-for="s in pitcherStats" :key="s.key" class="py-1 text-[10px] font-black text-pawa-brown/30 text-center">
+            <th class="py-1 text-[8px] sm:text-[10px] font-black text-pawa-brown/30 text-center">球速</th>
+            <th v-for="s in pitcherStats" :key="s.key" class="py-1 text-[8px] sm:text-[10px] font-black text-pawa-brown/30 text-center">
               {{ s.label }}
             </th>
+            <th class="py-1 text-[8px] sm:text-[10px] font-black text-pawa-brown/30 text-center uppercase">Pitches</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="py-2 text-left px-1">
-              <span class="text-base font-black text-pawa-red">{{ player.velo }}</span>
-              <span class="text-[8px] font-bold text-pawa-red/50 ml-0.5">km/h</span>
+            <td class="py-2 text-center">
+              <div class="flex flex-col items-center">
+                <span class="text-sm font-black text-pawa-red">{{ player.velo }}</span>
+                <span class="text-[7px] font-bold text-pawa-red/50 uppercase leading-none">km/h</span>
+              </div>
             </td>
             <td v-for="s in pitcherStats" :key="s.key" class="py-2 text-center">
               <div class="flex justify-center">
                 <PlayersStatBadge :value="player[s.key]" />
               </div>
+            </td>
+            <td class="py-2 text-center">
+              <span class="text-[10px] font-black text-pawa-blue">{{ parsePitches(player.balls) ? Object.keys(parsePitches(player.balls)).length : 0 }}</span>
             </td>
           </tr>
         </tbody>
@@ -115,17 +121,6 @@ const isPitcher = computed(() => checkIsPitcher(props.player))
 </template>
 
 <style scoped>
-.app-card {
-  background: white;
-  border: 4px solid #e2e8f0;
-  border-radius: 2rem;
-  box-shadow: 0 4px 0 rgba(0,0,0,0.05);
-}
-
-.summary-table th {
-  text-align: center;
-}
-
 /* Expand Animation */
 .expand-enter-active,
 .expand-leave-active {
