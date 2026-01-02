@@ -47,66 +47,69 @@ const getTeamColorClass = (team: string) => {
       </div>
     </div>
 
-    <!-- Players List: Wide horizontal Row Layout (No Scrolling) -->
+    <!-- Players List: Wide horizontal Row Layout (Scrollable on Mobile) -->
     <div v-else-if="latestPlayers && latestPlayers.length" class="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-1 min-h-0 py-1">
       <div 
         v-for="p in latestPlayers" 
         :key="p.name"
-        class="flex items-center justify-between gap-3 border-b border-pawa-brown/5 pb-2.5 pt-1 group/item px-2"
+        class="flex items-center border-b border-pawa-brown/5 pb-2.5 pt-1 group/item overflow-x-auto no-scrollbar"
       >
-        <!-- Left: Identity (Team & Name) -->
-        <div class="flex items-center gap-4 flex-shrink-0">
-           <PlayersTeamBadge :team="p.team" :no="p.no" size="md" />
-           <PlayersNameCapsule :player="p" size="md" />
-        </div>
-
-        <!-- Right: Stats (Stacked Table Style) -->
-        <div class="flex items-center gap-x-2.5">
-          <!-- Batters -->
-          <div v-if="!isPitcher(p)" class="flex items-center gap-x-2.5">
-             <!-- 彈道 -->
-             <div class="flex flex-col items-center">
-                <span class="text-[8px] font-black text-pawa-brown/30 mb-0.5 uppercase tracking-tighter">彈道</span>
-                <span class="text-[14px] font-black text-pawa-brown leading-none h-6 flex items-center">{{ p.traj || '1' }}</span>
-             </div>
-             <!-- Grades -->
-             <div v-for="s in [
-               { k: 'con', l: '巧打' }, { k: 'pow', l: '力量' }, { k: 'spd', l: '速度' }, 
-               { k: 'arm', l: '臂力' }, { k: 'fld', l: '守備' }, { k: 'err', l: '捕球' }
-             ]" :key="s.k" class="flex flex-col items-center">
-                <span class="text-[8px] font-black text-pawa-brown/30 mb-0.5 uppercase tracking-tighter whitespace-nowrap">{{ s.l }}</span>
-                <PlayersStatBadge :value="p[s.k]" size="md" />
-             </div>
+        <!-- Inner scrollable wrapper to ensure content doesn't shrink -->
+        <div class="flex items-center justify-between gap-6 min-w-max px-2 w-full">
+          <!-- Left: Identity (Team & Name) -->
+          <div class="flex items-center gap-4 flex-shrink-0">
+             <PlayersTeamBadge :team="p.team" :no="p.no" size="md" />
+             <PlayersNameCapsule :player="p" size="md" />
           </div>
 
-          <!-- Pitchers -->
-          <div v-else class="flex items-center gap-x-3">
-             <!-- 球速 -->
-             <div class="flex flex-col items-center">
-                <span class="text-[8px] font-black text-pawa-brown/30 mb-0.5 uppercase tracking-tighter">球速</span>
-                <span class="text-[12px] font-black text-pawa-red leading-none h-6 flex items-center">{{ p.velo || '-' }}</span>
-             </div>
-             <!-- Grades -->
-             <div v-for="s in [{ k: 'ctl', l: '控球' }, { k: 'sta', l: '體力' }]" :key="s.k" 
-                  class="flex flex-col items-center">
-                <span class="text-[8px] font-black text-pawa-brown/30 mb-0.5 uppercase tracking-tighter">{{ s.l }}</span>
-                <PlayersStatBadge :value="p[s.k]" size="md" />
-             </div>
+          <!-- Right: Stats (Stacked Table Style) -->
+          <div class="flex items-center gap-x-2.5">
+            <!-- Batters -->
+            <div v-if="!isPitcher(p)" class="flex items-center gap-x-2.5">
+               <!-- 彈道 -->
+               <div class="flex flex-col items-center">
+                  <span class="text-[8px] font-black text-pawa-brown/30 mb-0.5 uppercase tracking-tighter">彈道</span>
+                  <span class="text-[14px] font-black text-pawa-brown leading-none h-6 flex items-center">{{ p.traj || '1' }}</span>
+               </div>
+               <!-- Grades -->
+               <div v-for="s in [
+                 { k: 'con', l: '巧打' }, { k: 'pow', l: '力量' }, { k: 'spd', l: '速度' }, 
+                 { k: 'arm', l: '臂力' }, { k: 'fld', l: '守備' }, { k: 'err', l: '捕球' }
+               ]" :key="s.k" class="flex flex-col items-center">
+                  <span class="text-[8px] font-black text-pawa-brown/30 mb-0.5 uppercase tracking-tighter whitespace-nowrap">{{ s.l }}</span>
+                  <PlayersStatBadge :value="p[s.k]" size="md" />
+               </div>
+            </div>
 
-             <!-- 變化球 -->
-             <div class="flex flex-col items-start min-w-[80px]">
-                <span class="text-[8px] font-black text-pawa-blue/40 uppercase tracking-tighter mb-0.5">變化球</span>
-                <div class="flex items-center gap-1 h-6">
-                  <div 
-                    v-for="ball in splitPitchNames(p.balls)" 
-                    :key="ball"
-                    class="shrink-0 px-1 py-0.5 rounded bg-pawa-blue/5 border border-pawa-blue/10 text-[9px] font-black text-pawa-blue"
-                  >
-                    {{ ball }}
+            <!-- Pitchers -->
+            <div v-else class="flex items-center gap-x-3">
+               <!-- 球速 -->
+               <div class="flex flex-col items-center">
+                  <span class="text-[8px] font-black text-pawa-brown/30 mb-0.5 uppercase tracking-tighter">球速</span>
+                  <span class="text-[12px] font-black text-pawa-red leading-none h-6 flex items-center">{{ p.velo || '-' }}</span>
+               </div>
+               <!-- Grades -->
+               <div v-for="s in [{ k: 'ctl', l: '控球' }, { k: 'sta', l: '體力' }]" :key="s.k" 
+                    class="flex flex-col items-center">
+                  <span class="text-[8px] font-black text-pawa-brown/30 mb-0.5 uppercase tracking-tighter">{{ s.l }}</span>
+                  <PlayersStatBadge :value="p[s.k]" size="md" />
+               </div>
+
+               <!-- 變化球 -->
+               <div class="flex flex-col items-start min-w-[80px]">
+                  <span class="text-[8px] font-black text-pawa-blue/40 uppercase tracking-tighter mb-0.5">變化球</span>
+                  <div class="flex items-center gap-1 h-6">
+                    <div 
+                      v-for="ball in splitPitchNames(p.balls)" 
+                      :key="ball"
+                      class="shrink-0 px-1 py-0.5 rounded bg-pawa-blue/5 border border-pawa-blue/10 text-[9px] font-black text-pawa-blue"
+                    >
+                      {{ ball }}
+                    </div>
+                    <span v-if="!p.balls" class="text-[10px] font-black text-pawa-black/10">無</span>
                   </div>
-                  <span v-if="!p.balls" class="text-[10px] font-black text-pawa-black/10">無</span>
-                </div>
-             </div>
+               </div>
+            </div>
           </div>
         </div>
       </div>
