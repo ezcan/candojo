@@ -68,7 +68,7 @@
     /* 內層：定義粉色底色與縫線 */
     .pawa-inner {
         /* 這裡的背景色會由元件傳入的 bg-pawa-xxxInner 決定 */
-        @apply rounded-[2.2rem] h-full p-6 relative flex flex-col;
+        @apply rounded-[2.2rem] h-full p-4 sm:p-6 relative flex flex-col;
     }
 
     /* 實況野球靈魂：白色虛線縫線 */
@@ -97,4 +97,11 @@
     }
 
 
+}
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
