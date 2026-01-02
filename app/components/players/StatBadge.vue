@@ -16,8 +16,8 @@ const sizeClasses = computed(() => {
 
 <template>
   <div 
-    :class="[sizeClasses, 'rounded shadow-sm flex items-center justify-center font-black transition-transform group-hover:scale-110']"
-    :style="{ color: grade.color }"
+    :class="[sizeClasses, 'rounded shadow-sm flex items-center justify-center font-black transition-transform group-hover:scale-110 border border-black/5 shrink-0']"
+    :style="{ backgroundColor: grade.color, color: 'white' }"
   >
     {{ grade.label }}
   </div>

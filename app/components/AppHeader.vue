@@ -53,7 +53,7 @@ const navItems = [
             <div 
               class="transition-all duration-500 logo-idle-float"
               :class="isHome 
-                ? 'p-0 mb-4 sm:mb-6 lg:mb-4 scale-125 sm:scale-150' 
+                ? 'p-0 mb-4 sm:mb-6 lg:mb-4 scale-110 sm:scale-150' 
                 : [
                   'p-1.5 rounded-xl sm:rounded-2xl border-2 border-pawa-brown/5 shadow-sm group-hover:rotate-3',
                   isScrolled ? 'bg-white' : 'bg-white/50'
