@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Huninn&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    font-family: 'Huninn', sans-serif;
+
+    --sky-top: #E0F2FE;
+    /* Sky 100 */
+    --sky-mid: #BAE6FD;
+    /* Sky 200 */
+
+    /* 草地/紙張（改為冷灰色調，移除粉綠感） */
+    --ground-mid: #F1F5F9;
+    /* Slate 100 */
+    --ground-bottom: #E2E8F0;
+    /* Slate 200 */
+
+
+    /* 紙纖維 */
+    --fiber-dark: rgba(40, 80, 120, 0.08);
+    --fiber-light: rgba(255, 255, 255, 0.6);
+}
+
+.paper-bg {
+    background:
+        /* ☁️ 天空 → 草地的大色塊漸層（最重要） */
+        linear-gradient(180deg,
+            var(--sky-top) 0%,
+            var(--sky-mid) 35%,
+            var(--ground-mid) 70%,
+            var(--ground-bottom) 100%),
+
+        /* 🧵 紙纖維（深） */
+        repeating-linear-gradient(45deg,
+            var(--fiber-dark) 0px,
+            var(--fiber-dark) 1px,
+            transparent 1px,
+            transparent 7px),
+
+        /* 🧵 紙纖維（亮） */
+        repeating-linear-gradient(-45deg,
+            var(--fiber-light) 0px,
+            var(--fiber-light) 1px,
+            transparent 1px,
+            transparent 10px);
+
+    background-blend-mode:
+        normal,
+        multiply,
+        overlay;
+
+    background-attachment: fixed;
+    background-image:
+        radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+        linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 35%, var(--ground-mid) 70%, var(--ground-bottom) 100%);
+    background-size: 24px 24px, 100% 100%;
+}
+
+@layer components {
+    .pawa-card {
+        @apply border-[4px] border-black/15 rounded-[2.5rem] relative transition-all duration-200 ease-pop bg-white p-[3px] cursor-pointer select-none overflow-hidden;
+        /* 複合陰影：外層厚度 + 內側極細亮邊 */
+        box-shadow: theme('boxShadow.block'), theme('boxShadow.insetSoft');
+    }
+
+    /* 內層：定義粉色底色與縫線 */
+    .pawa-inner {
+        /* 這裡的背景色會由元件傳入的 bg-pawa-xxxInner 決定 */
+        @apply rounded-[2.2rem] h-full p-6 relative flex flex-col;
+    }
+
+    /* 實況野球靈魂：白色虛線縫線 */
+    .pawa-inner::after {
+        content: '';
+        /* 虛線定位在內框邊緣 */
+        @apply absolute inset-2 border-[2px] border-dashed border-black/5 rounded-[1.8rem] pointer-events-none;
+    }
+
+    /* 互動效果升級 */
+    .pawa-card:hover {
+        @apply -translate-y-1.5;
+        box-shadow: theme('boxShadow.blockHover'), theme('boxShadow.insetSoft');
+        animation: wobble 350ms ease-in-out;
+    }
+
+    .pawa-card:active {
+        @apply translate-y-1;
+        box-shadow: theme('boxShadow.blockSm');
+    }
+
+    .pawa-container {
+        @apply w-full mx-auto px-3 sm:px-6;
+        /* 設定最大寬度，擴大以容納橫向能力值 */
+        max-width: 1100px;
+    }
+
+
+}
