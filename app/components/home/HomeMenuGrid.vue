@@ -20,7 +20,9 @@
 
     <UiBlockTile to="/notes" theme="red" center class="col-span-1 row-span-1">
       <div>
-        <div class="text-2xl mb-1">🧠</div>
+        <div class="mb-1">
+          <UiIcon name="lightbulb-on" size="40" />
+        </div>
         <div class="text-lg font-black leading-tight">學習筆記</div>
         <div class="text-[10px] font-bold opacity-60 uppercase tracking-tighter">Notes</div>
       </div>

@@ -25,6 +25,9 @@ export default {
                     yellow: '#FFBF00',    // 金幣黃
                     yellowInner: '#FEF9C3', // 稍微加深黃 (Yellow 100)
                     yellowDark: '#CC9900',  // Hover 專用深黃
+                    purple: '#A855F7',      // 亮紫色 (Purple 500)
+                    purpleInner: '#F3E8FF', // 淺紫色背景 (Purple 100)
+                    purpleDark: '#7E22CE',  // Hover 專用深紫色 (Purple 700)
 
 
                 },

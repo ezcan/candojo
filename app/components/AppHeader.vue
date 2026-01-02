@@ -6,10 +6,10 @@ const { y } = useWindowScroll()
 const isScrolled = computed(() => y.value > 10)
 
 const navItems = [
-  { to: '/', label: '首頁', icon: '🏠', theme: 'blue' },
-  { to: '/players', label: '球員資料', icon: 'baseball-alt', theme: 'blue', isSvg: true },
+  { to: '/', label: '首頁', icon: 'house-window', theme: 'blue', isSvg: true },
+  { to: '/players', label: '球員資料', icon: 'baseball-alt', theme: 'purple', isSvg: true },
   { to: '/kanji', label: '漢字查詢', icon: 'analytics-magnifying-glass', theme: 'blue', isSvg: true },
-  { to: '/notes', label: '學習筆記', icon: '🧠', theme: 'red' },
+  { to: '/notes', label: '學習筆記', icon: 'lightbulb-on', theme: 'red', isSvg: true },
   { to: '/tools', label: 'AI工具', icon: 'tool-box', theme: 'yellow', isSvg: true },
   { to: '/about', label: '關於我', icon: 'info', theme: 'green', isSvg: true },
 ]
@@ -54,10 +54,7 @@ const navItems = [
               class="transition-all duration-500 logo-idle-float"
               :class="isHome 
                 ? 'p-0 mb-4 sm:mb-6 lg:mb-4 scale-110 sm:scale-150' 
-                : [
-                  'p-1.5 rounded-xl sm:rounded-2xl border-2 border-pawa-brown/5 shadow-sm group-hover:rotate-3',
-                  isScrolled ? 'bg-white' : 'bg-white/50'
-                ]"
+                : 'p-1.5 group-hover:rotate-3 scale-110'"
             >
               <img src="/brand/logo.png" alt="CANDOJO" :class="isHome ? 'h-20 sm:h-24' : 'h-6'" class="w-auto" />
             </div>
@@ -65,7 +62,6 @@ const navItems = [
             <!-- Text branding -->
             <div :class="isHome ? 'text-center' : 'flex flex-col select-none text-left'">
               <HomeTypingTagline v-if="isHome" />
-              <span v-else class="text-xs font-black text-pawa-brown tracking-tighter opacity-40 uppercase italic">Candojo.com</span>
             </div>
           </NuxtLink>
 
@@ -121,6 +117,7 @@ const navItems = [
 .shadow-active-red { box-shadow: 0 4px 0 0 #CC3D3D; }
 .shadow-active-green { box-shadow: 0 4px 0 0 #388038; }
 .shadow-active-yellow { box-shadow: 0 4px 0 0 #CC9900; }
+.shadow-active-purple { box-shadow: 0 4px 0 0 #7E22CE; }
 
 .ease-pop {
   transition-timing-function: cubic-bezier(.2, 1.3, .3, 1);

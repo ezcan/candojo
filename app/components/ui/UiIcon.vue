@@ -41,7 +41,7 @@ const iconStyle = computed(() => {
 
 <template>
   <span 
-    class="ui-icon" 
+    class="ui-icon transition-all duration-500 cubic-bezier(0.34, 1.56, 0.64, 1) group-hover:scale-115 group-hover:-rotate-12 group-hover:brightness-110" 
     :style="iconStyle"
     :data-icon="name"
     aria-hidden="true"

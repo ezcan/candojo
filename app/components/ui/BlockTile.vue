@@ -1,4 +1,8 @@
 <script setup lang="ts">
+defineOptions({
+  inheritAttrs: false
+})
+
 const props = withDefaults(defineProps<{
   colorClass?: string
   to?: string
@@ -20,9 +24,9 @@ const themeShadows: Record<string, string> = {
 </script>
 
 <template>
-  <!-- Link Version -->
   <NuxtLink
     v-if="to"
+    v-bind="$attrs"
     :to="to"
     class="pawa-card group relative h-full flex flex-col p-[3px] transition-all duration-300 cursor-pointer"
     :class="[
@@ -43,9 +47,9 @@ const themeShadows: Record<string, string> = {
     </div>
   </NuxtLink>
 
-  <!-- Div Version -->
   <div
     v-else
+    v-bind="$attrs"
     class="pawa-card group relative h-full flex flex-col p-[3px] transition-all duration-300 cursor-default"
     :class="[
       interactive ? `hover:border-pawa-${theme}Dark hover:-translate-y-2 interactive-tile` : `border-pawa-${theme}`,
